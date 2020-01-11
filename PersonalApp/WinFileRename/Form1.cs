@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinFileRename
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
+        }
+
+        private void ButtonExecute_Click(object sender, EventArgs e)
+        {
+            TextBoxProgress.Text = this.SetAppPath();
+        }
+
+        private string SetAppPath()
+        {
+            string returnValue = Application.ExecutablePath;
+
+            return returnValue;
         }
     }
 }
