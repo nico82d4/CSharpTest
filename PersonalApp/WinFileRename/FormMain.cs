@@ -12,24 +12,27 @@ namespace WinFileRename
             InitializeComponent();
         }
 
+
+        // 実行ボタンを押下した時の処理
         private void ButtonExecute_Click(object sender, EventArgs e)
         {
-            TextBoxProgress.Text = this.GetFileList();
+            var list = GetFileList();
+            string str = "";
+
+            foreach (var lst in list)
+            {
+                str += lst + "\r\n";
+            }
+
+            TextBoxProgress.Text = str;
         }
 
-        private string SetAppPath()
-        {
-            // アプリケーションの実行パスを取得
-            string returnValue = Application.ExecutablePath;
-
-            return returnValue;
-        }
 
 
         // ファイルの一覧を文字列で返す処理
-        private string GetFileList()
+        private List<string> GetFileList()
         {
-            string returnValue = "";
+            var lst = new List<string>();
 
             try
             {
@@ -42,7 +45,7 @@ namespace WinFileRename
                 // パスとパスとの間には、改行コードを挿入する。Windows用なのでCrLf。
                 foreach (var info in infos)
                 {
-                    returnValue += info.FullName + "\r\n";
+                    lst.Add(info.FullName);
                 }
             }
             catch (ArgumentException ex)
@@ -63,7 +66,7 @@ namespace WinFileRename
             }
 
             // 戻り値を返す。
-            return returnValue;
+            return lst;
         }
     }
 }
