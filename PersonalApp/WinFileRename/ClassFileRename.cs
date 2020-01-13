@@ -2,13 +2,11 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-// using System.Text;
-// using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 
 //*******************************************************************
-//* ファイルリネーム用クラス
+//* ファイル名の変換用クラス
 //*
 //*******************************************************************
 
@@ -24,13 +22,13 @@ namespace WinFileRename
 
 
 
-        // ファイルリネームの実行
+        // ファイル名変更処理の実行
         public Boolean Execute(string path)
         {
             // 戻り値の初期値をFalseとする。
             Boolean returnValue = false;
 
-            // 入力・置換件数カウンタ
+            // 入力・変換件数カウンタ
             int inputCount = 0;
             int replaceCount = 0;
 
@@ -52,35 +50,43 @@ namespace WinFileRename
                             // 入力件数カウンタのインクリメント
                             inputCount += 1;
 
-                            // ファイルのパス、拡張子、作成日時を取得
+                            // ファイルのパス、拡張子、更新日時を取得
+                            // （作成日時だとコピーした日付になる模様）
                             string filePath = lst.DirectoryName;
                             string oldFileName = lst.Name;
                             string ext = Path.GetExtension(oldFileName);
-                            string dt = Directory.GetCreationTime(lst.FullName).ToString("yyyy-MM-dd-hhmmss");
+                            string dt = Directory.GetLastWriteTime(lst.FullName).ToString("yyyy-MM-dd-HHmmss");
 
-                            // 置換後ファイル名。初期値は置換前ファイル名。
+                            // 変換後ファイル名。初期値は変換前ファイル名。
                             string newFIleName = oldFileName;
 
                             // 拡張子チェックのため、正規表現を使用。
-                            string pattern = "(?:bmp|jpg|jpeg|png)";
+                            string pattern = "^\\.(?:bmp|jpg|jpeg|png)$";
                             Regex rex = new Regex(pattern, RegexOptions.IgnoreCase);
 
-                            // 置換対象の拡張子である場合
+                            // 変換対象の拡張子である場合
                             if (rex.IsMatch(ext))
                             {
-                                // 置換後ファイル名の生成
-                                // （2020-01-13 時点では、固定された置換方法を行う。）
+                                // 変換後ファイル名の生成
+                                // （2020-01-13 時点では、固定された変換方法を行う。）
                                 newFIleName = dt + ext;
-                                
-                                // 置換件数カウンタのインクリメント
-                                replaceCount += 1;
-                            }
+                                string newFilePath = filePath + "\\" + newFIleName;
+                                Console.WriteLine(newFilePath); // debug
 
-                            // 結果出力用の文字列を生成
-                            // this.ResultString += filePath + oldFileName + " -> " + newFIleName + "\r\n";
+                                // 変換後のファイルが存在しない場合
+                                if (! File.Exists(newFilePath))
+                                {
+                                    // File.Move メソッドを使ってファイル名を変更する。
+                                    File.Move(lst.FullName, newFilePath);
+
+                                    // 変換件数カウンタのインクリメント
+                                    replaceCount += 1;
+                                }
+
+                            }
                         }
 
-                        // 置換件数カウンタが 0 より大きい場合、戻り値をTrueとする。
+                        // 変換件数カウンタが 0 より大きい場合、戻り値をTrueとする。
                         if (replaceCount > 0)
                         {
                             returnValue = true;

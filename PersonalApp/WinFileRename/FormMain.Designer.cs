@@ -46,7 +46,7 @@
             // 
             // TextBoxProgress
             // 
-            this.TextBoxProgress.Location = new System.Drawing.Point(34, 112);
+            this.TextBoxProgress.Location = new System.Drawing.Point(34, 149);
             this.TextBoxProgress.Multiline = true;
             this.TextBoxProgress.Name = "TextBoxProgress";
             this.TextBoxProgress.ReadOnly = true;
@@ -59,15 +59,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(51, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(392, 44);
+            this.label1.Size = new System.Drawing.Size(478, 88);
             this.label1.TabIndex = 2;
-            this.label1.Text = "現時点では、画像ファイル（jpg, png, bmp）の\r\nファイル名だけを変換します。";
+            this.label1.Text = "現時点では、画像ファイル（jpg, png, bmp）の\r\nファイル名だけを変換します。\r\n変換後のファイルが存在する場合、ファイル名の変更は\r\n行われません。";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 246);
+            this.ClientSize = new System.Drawing.Size(750, 275);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBoxProgress);
             this.Controls.Add(this.ButtonExecute);
