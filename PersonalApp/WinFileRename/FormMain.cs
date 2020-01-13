@@ -19,9 +19,10 @@ namespace WinFileRename
             // プログラム実行ディレクトリの取得
             string path = Path.GetDirectoryName(Application.ExecutablePath);
 
-            // ファイルリネーム実行クラスのインスタンスを生成し、
-            // 実行する。
+            // ファイルリネーム実行クラスのインスタンスを生成
             ClassFileRename fr = new ClassFileRename();
+
+            // ファイル置換処理の実行
             Boolean result = fr.Execute(path);
 
             // 実行結果がTrueなら、テキストボックスに結果を出力する。
@@ -29,9 +30,15 @@ namespace WinFileRename
             {
                 TextBoxProgress.Text = fr.ResultString;
             }
+
             // 実行結果がFalseの場合は、エラーメッセージを出力する。
             else
             {
+                if (fr.ResultString != "")
+                {
+                    TextBoxProgress.Text = fr.ResultString;
+                }
+
                 MessageBox.Show(fr.ErrorMessage, "エラー");
             }
         }

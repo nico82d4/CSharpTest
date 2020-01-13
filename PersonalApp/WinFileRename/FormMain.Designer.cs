@@ -30,11 +30,12 @@
         {
             this.ButtonExecute = new System.Windows.Forms.Button();
             this.TextBoxProgress = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonExecute
             // 
-            this.ButtonExecute.Location = new System.Drawing.Point(586, 65);
+            this.ButtonExecute.Location = new System.Drawing.Point(586, 41);
             this.ButtonExecute.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ButtonExecute.Name = "ButtonExecute";
             this.ButtonExecute.Size = new System.Drawing.Size(124, 47);
@@ -45,24 +46,40 @@
             // 
             // TextBoxProgress
             // 
-            this.TextBoxProgress.Location = new System.Drawing.Point(34, 169);
+            this.TextBoxProgress.Location = new System.Drawing.Point(34, 112);
             this.TextBoxProgress.Multiline = true;
             this.TextBoxProgress.Name = "TextBoxProgress";
             this.TextBoxProgress.ReadOnly = true;
+            this.TextBoxProgress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TextBoxProgress.Size = new System.Drawing.Size(676, 104);
             this.TextBoxProgress.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(51, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(392, 44);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "現時点では、画像ファイル（jpg, png, bmp）の\r\nファイル名だけを変換します。";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 297);
+            this.ClientSize = new System.Drawing.Size(750, 246);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TextBoxProgress);
             this.Controls.Add(this.ButtonExecute);
             this.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormMain";
-            this.Text = "WinFileRename";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ファイル名変換";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,6 +89,7 @@
 
         private System.Windows.Forms.Button ButtonExecute;
         private System.Windows.Forms.TextBox TextBoxProgress;
+        private System.Windows.Forms.Label label1;
     }
 }
 
