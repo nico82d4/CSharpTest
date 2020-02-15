@@ -61,8 +61,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(503, 110);
             this.label1.TabIndex = 2;
-            this.label1.Text = "現時点では、以下拡張子のファイル名だけを変換します。\r\n　画像ファイル：jpg, png, bmp\r\n　動画ファイル：mov, mp4\r\n変換後のファイルが存在す" +
-    "る場合、ファイル名の変更は\r\n行われません。";
+            this.label1.Text = "現時点では、以下拡張子のファイル名だけを変換します。\r\n　画像ファイル：jpg, png, bmp, png\r\n　動画ファイル：mov, mp4, avi\r\n変換" +
+    "後のファイルが存在する場合、ファイル名の変更は\r\n行われません。";
             // 
             // FormMain
             // 
