@@ -61,7 +61,7 @@ namespace WinFileRename
                             string newFIleName = oldFileName;
 
                             // 拡張子チェックのため、正規表現を使用。
-                            string pattern = "^\\.(?:bmp|jpg|jpeg|png)$";
+                            string pattern = "^\\.(?:bmp|jpg|jpeg|png|mov|mp4)$";
                             Regex rex = new Regex(pattern, RegexOptions.IgnoreCase);
 
                             // 変換対象の拡張子である場合
